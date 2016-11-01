@@ -5,3 +5,5 @@ Available positions on this team are:
 Javascript Front-end Developer
 Java / Javascript Developer or Javascript Front-end Developer
 Java / Javascript Developer
+
+We will be using the MEAN stack (MongoDB, Express JS, Angular JS, Node JS) to develop this web application.
