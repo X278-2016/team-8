@@ -1,5 +1,5 @@
 /**
- * Created by Peter on 11/1/16.
+ * Created by Peter on 11/7/16.
  */
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -12,18 +12,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var HomepageComponent = (function () {
+    function HomepageComponent() {
     }
-    AppComponent = __decorate([
+    HomepageComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-app',
-            template: "<h1>HPV Vaccination Portal</h1>\n               <router-outlet></router-outlet>"
+            selector: 'my-homepage',
+            template: " <img src=\"/app/vumc-logo.jpg\">\n                <nav>\n                    <a routerLink=\"/assessment\">Assessment</a> \n                </nav>"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HomepageComponent);
+    return HomepageComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.HomepageComponent = HomepageComponent;
+//# sourceMappingURL=homepage.component.js.map

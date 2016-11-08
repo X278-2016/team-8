@@ -13,14 +13,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var app_routing_module_1 = require('./app-routing.module');
+var assessment_module_1 = require("./assessment/assessment.module");
 var app_component_1 = require('./app.component');
+var homepage_component_1 = require('./homepage.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent],
+            imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule, assessment_module_1.AssessmentModule],
+            declarations: [app_component_1.AppComponent, homepage_component_1.HomepageComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
