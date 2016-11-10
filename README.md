@@ -6,6 +6,4 @@ Javascript Front-end Developer
 Java / Javascript Developer or Javascript Front-end Developer
 Java / Javascript Developer
 
-Goals for next Tuesday:
-1. Complete Angularjs tutorial 
-2. Prepare to commit code for login/registration page on Tuesday.
+We will be using the MEAN stack (MongoDB, Express JS, Angular JS, Node JS) to develop this web application.

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assessment Results</title>
+</head>
+<body>
+    <h2>Thank you for completing your clinic self-assessment</h2>
+    <ol>
+        <li *ngFor="let recommendation of recommendations">
+            <span>{{recommendation}}</span>
+        </li>
+    </ol>
+    <!Will incorporate one-way data binding to make it say update/create timeline depending on if user has created one yet>
+    <a [routerLink]="['/']">Create Timeline</a>
+    <a [routerLink]="['/']">Learning Modules</a>
+</body>
+</html>

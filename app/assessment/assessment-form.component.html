@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self-Assessment</title>
+</head>
+<body>
+    <h2>Self-Assessment</h2>
+    <div *ngFor="let question of questions; let i = index">
+        <label>Question {{i+1}}: {{question}}</label>
+        1<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="1">
+        2<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="2">
+        3<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="3">
+        4<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="4">
+        5<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="5">
+    </div>
+    <button type="submit" (click)="submitForm(); false">Submit</button>
+</body>
+</html>
