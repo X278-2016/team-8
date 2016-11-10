@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+//This code will need some changes to fit into the overall app structure.
+
+<!-- Include the AngularJS library --> //This path will need to be added
+<script src=""></script>
+
+
+<!-- Modules -->  //This path will need to be added
+<script src=""></script>
+
+<!-- Controllers --> //This path will need to be added. Not a major issue just yet as the progress bar won't be implemented
+<script src="/recommendation_controller"></script>
+
+<!-- Directives --> //This path will need to be added
+<script src="/recommendation.js"></script>
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Goals </title>
+</head>
+
+
+// will need app name
+<body ng-app="">
+
+<h1> Tailored Action Plan </h1>
+
+// Will add styling later to have recomendations in two parallel columns
+<div id="recommendations">
+
+//The left side of the page
+<section id="odd_recommendations">
+
+    <recommendation title="Recommendation 1"></recommendation>
+
+    <recommendation title="Recommendation 3"></recommendation>
+
+    <recommendation title="Recommendation 5"></recommendation>
+
+</section>
+
+
+//The right side of the page
+<section id="even_recommendations">
+
+    <recommendation title="Recommendation 2"></recommendation>
+
+    <recommendation title="Recommendation 4"></recommendation>
+
+    <recommendation title="Recommendation 6"></recommendation>
+
+</section>
+
+
+</div>
+
+
+<button id="next"> Next</button>
+
+</body>
+</html>
