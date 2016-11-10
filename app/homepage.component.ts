@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
     template: ` <img src="/app/vumc-logo.jpg">
                 <nav>
                     <a routerLink="/assessment">Assessment</a> 
+                    <a routerLink="/login">Login</a>
                 </nav>`
 })
 
