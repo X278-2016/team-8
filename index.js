@@ -15,6 +15,10 @@ app.use(express.static('./'));
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('*', function(req, res){
+    res.sendFile(__dirname+'/index.html');
+});
+
 //Starting up server on port 8080
 let server = app.listen(8080, function(){
     console.log('HPV app listening on '+server.address().port);
