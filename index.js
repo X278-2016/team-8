@@ -6,7 +6,8 @@
 
 let express = require('express'),
     bodyParser = require('body-parser'),
-    logger = require('morgan');
+    logger = require('morgan'),
+    mongoose = require('mongoose');
 
 let app = express();
 app.use(express.static('./'));
@@ -14,6 +15,10 @@ app.use(express.static('./'));
 //Adding bodyParser middleware
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Connecting to MongoDB database
+let dbname = 'hpv_db';
+mongoose.connect('mongodb://localhost:27017'+dbname);
 
 app.get('*', function(req, res){
     res.sendFile(__dirname+'/index.html');
