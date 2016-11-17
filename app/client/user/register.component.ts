@@ -11,6 +11,7 @@ import { AuthenticationService } from './authentication.service';
 
 @Component({
     moduleId: module.id,
+    selector: 'my-register',
     templateUrl: 'register.component.html'
 })
 
