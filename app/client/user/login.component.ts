@@ -7,8 +7,7 @@ import { User } from './user.model';
 @Component({
     moduleId: module.id,
     selector: 'my-login',
-    templateUrl: 'login.component.html',
-    providers: [ AuthenticationService ]
+    templateUrl: 'login.component.html'
 })
 
 export class LoginComponent /*implements OnInit*/ {
