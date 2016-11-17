@@ -5,6 +5,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthenticationService } from './authentication.service';
+
 
 
 @Component({
@@ -19,12 +21,12 @@ export class RegisterComponent {
     constructor(
         private router: Router,
         //still need to create a user service to handle logic of adding users to the user model
-        private userService: UserService,
+        private authenticationService: AuthenticationService,
         ) { }
 
     register() {
         this.loading = true;
-        this.userService.create(this.model)
+        this.authenticationService.create(this.model)
             .subscribe(
                 data => {
                     //navigate to login page
