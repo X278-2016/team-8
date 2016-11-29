@@ -6,4 +6,4 @@ Javascript Front-end Developer
 Java / Javascript Developer or Javascript Front-end Developer
 Java / Javascript Developer
 
-We will be using the MEAN stack (MongoDB, Express JS, Angular JS, Node JS) to develop this web application.
+We chose to develop this application with an Angular2 front end paired with a Rails API and MySQL backend.
