@@ -22,8 +22,15 @@ export class AssessmentResultsComponent implements OnInit {
 
     //Member functions
     getRecommendations(): void {
-        let recommendations = this.assessmentResultsService.getRecommendations();
-        this.recommendations = recommendations;
+        let recommendations = this.assessmentResultsService.getRecommendations().subscribe(
+            recommendations => {
+                this.recommendations = recommendations;
+            },
+            error => {
+                //Do something in case of error
+                console.log("Error getting questions "+error);
+            }
+        );
     }
 
     //Lifecycle functions

@@ -3,16 +3,24 @@
  */
 
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import {Observable} from 'rxjs';
+import 'rxjs/Rx';
 
 @Injectable()
 export class AssessmentResultsService{
-    getRecommendations(): string[] {
-        return results;
+    constructor(private http: Http) { }
+
+    getRecommendations(): Observable<string[]> {
+        return this.http.get('http://localhost:3002/api/recommendations')
+            .map((response: Response) => {
+                let r = response.json();
+                let answers = [];
+                for(let i=0; i<r.data.length; i++)
+                {
+                    answers.push(r.data[i].content);
+                }
+                return answers;
+            });
     }
 }
-
-//Mock object for recommendations to be displayed on assessment-results view
-//Will be replaced with RESTful API calls to server once a back-end is implemented
-//Recommendations will be retrieved based off of username of user
-//Timeline and learning module will be created and retrieved using username of user as well
-const results: string[] = ["Recommendation 1", "Recommendation 2", "Recommendation 3", "Recommendation 4", "Recommendation 5"];

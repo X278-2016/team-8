@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Angular2TokenService } from 'angular2-token';
 
-import { AuthenticationService } from './authentication.service';
 import { User } from './user.model';
 
 @Component({
@@ -10,33 +10,32 @@ import { User } from './user.model';
     templateUrl: 'login.component.html'
 })
 
-export class LoginComponent /*implements OnInit*/ {
-    constructor(private router: Router, private authenticationService: AuthenticationService) { }
+export class LoginComponent implements OnInit {
+    constructor(private router: Router, private _tokenService: Angular2TokenService) { }
 
     //Member fields
     user: User;
-    loading = false;
 
     //Member functions
     login() {
-        this.loading = true;
-        this.authenticationService.login(this.user.username, this.user.password)
-            .subscribe(
-                data => {
-                    //Will eventually navigate user to either assessment or results depending on status
-                    this.router.navigate(['/']);
-                },
-                error => {
-                    this.loading = false;
-                });
+        this._tokenService.signIn({
+            email: this.user.email,
+            password: this.user.password
+        }).subscribe(
+            res => {
+                console.log(res);
+                this.router.navigateByUrl('/assessment');
+            },
+                    error => console.log(error)
+        );
     }
 
     //Lifecycle methods
     ngOnInit() {
-        // reset login status (will evenutally check to see here if a user is logged in (using authentication service) and if they are it will redirect them to assessment results page_
-        this.authenticationService.logout();
+        //Check to see if user is logged in
+        if(this._tokenService.userSignedIn())
+            this.router.navigateByUrl('/assessment');
 
-        // create new user field
         this.user = new User;
     }
 

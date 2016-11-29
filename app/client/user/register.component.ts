@@ -2,10 +2,12 @@
  * Created by Tory on 11/10/16.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Angular2TokenService } from 'angular2-token';
 
-import { AuthenticationService } from './authentication.service';
+
+import { User } from './user.model';
 
 
 
@@ -15,27 +17,30 @@ import { AuthenticationService } from './authentication.service';
     templateUrl: 'register.component.html'
 })
 
-export class RegisterComponent {
-    model: any = {};
-    loading = false;
+export class RegisterComponent implements OnInit {
+    user: User;
 
-    constructor(
-        private router: Router,
-        //still need to create a user service to handle logic of adding users to the user model
-        private authenticationService: AuthenticationService,
-        ) { }
+    constructor( private router: Router, private _tokenService: Angular2TokenService ) {};
 
     register() {
-        this.loading = true;
-        this.authenticationService.create(this.model)
-            .subscribe(
-                data => {
-                    //navigate to login page
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    //don't load this user into user model
-                    this.loading = false;
-                });
+        this._tokenService.request({
+            method: 'POST',
+            url: 'http://localhost:3002/api/auth',
+            body: {
+            email: this.user.email,
+            password: this.user.password,
+            password_confirmation: this.user.passwordConfirmation,
+            name: this.user.name,
+            clinic: this.user.clinic
+        }}).subscribe(
+            res => console.log(res),
+            error => console.log(error)
+        );
+    }
+
+    //Lifecycle methods
+    ngOnInit() {
+        // create new user field
+        this.user = new User;
     }
 }

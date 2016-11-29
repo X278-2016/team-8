@@ -4,16 +4,17 @@
 
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { Angular2TokenService } from "angular2-token"
 
 import { AssessmentCenterComponent } from "./assessment-center.component";
 import { AssessmentFormComponent } from "./assessment-form.component";
 import { AssessmentResultsComponent } from "./assessment-results.component";
 
 const routes: Routes = [
-    {path: 'assessment', component: AssessmentCenterComponent, children: [
+    {path: 'assessment', component: AssessmentCenterComponent, canActivate: [Angular2TokenService], children: [
         {path: '', redirectTo: 'form', pathMatch: 'full'},
         {path: 'form', component: AssessmentFormComponent},
-        {path: ':id', component: AssessmentResultsComponent}
+        {path: ':username', component: AssessmentResultsComponent}
     ]}
 ];
 

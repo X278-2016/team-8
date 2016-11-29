@@ -2,7 +2,7 @@
   "name": "HPV_Vaccination",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server -c bs-config.json\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
@@ -33,7 +33,8 @@
     "body-parser": "latest",
     "morgan": "latest",
     "mongoose": "latest",
-    "bcrypt": "latest"
+    "bcrypt": "latest",
+    "angular2-token": "latest"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",

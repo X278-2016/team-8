@@ -3,6 +3,7 @@
  */
 
 import { Component } from '@angular/core';
+import { Angular2TokenService } from 'angular2-token';
 
 @Component({
     moduleId: module.id,
@@ -12,4 +13,8 @@ import { Component } from '@angular/core';
 })
 
 //Component class is empty as we don't need any application logic
-export class AppComponent {}
+export class AppComponent {
+    constructor(private _tokenService: Angular2TokenService){
+        this._tokenService.init({apiPath: "http://localhost:3002/api", signInRedirect: '/login'});
+    }
+}

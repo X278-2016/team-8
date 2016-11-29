@@ -3,22 +3,29 @@
  */
 
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import {Observable} from 'rxjs';
+import 'rxjs/Rx';
 
 @Injectable()
 export class AssessmentFormService{
-    getQuestions(): string[] {
-        return questions;
+    constructor(private http: Http) { }
+
+    getQuestions(): Observable<string[]> {
+        return this.http.get('http://localhost:3002/api/questions')
+            .map((response: Response) => {
+                let r = response.json();
+                let questions = [];
+                for(let i=0; i<r.data.length; i++)
+                {
+                    questions.push(r.data[i].content);
+                }
+                return questions;
+            });
     }
-    sendAnswers(tempanswers: Number[]): string {
-        //Once we implement a back-end this method will send answers to server to be saved in DB
-        //and will return username of user for use in retrieving results computed by algorithm
-        answers = tempanswers;
-        console.log(answers);
-        return 'temp';
+
+    sendAnswers(answers): Observable<Response>  {
+        return this.http.post('http://localhost:3002/api/recommendations', answers)
+            .map((response: Response) => response.json());
     }
 }
-
-//Mock object for questions to be displayed on assessment-test view
-//Will be replaced with RESTful API calls to server once a back-end is implemented
-const questions: string[] = ["QUESTION 1", "QUESTION 2", "QUESTION 3", "QUESTION 4", "QUESTION 5", "QUESTION 6"];
-var answers: Number[] = [ ];

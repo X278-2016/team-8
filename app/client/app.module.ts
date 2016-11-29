@@ -5,6 +5,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { Angular2TokenService} from 'angular2-token';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AssessmentModule } from './assessment/assessment.module';
@@ -13,8 +14,9 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage.component';
 
 @NgModule({
-    imports: [ BrowserModule, HttpModule, AppRoutingModule, AssessmentModule, UserModule ],
+    imports: [ BrowserModule, HttpModule, AppRoutingModule, AssessmentModule, UserModule],
     declarations: [ AppComponent, HomepageComponent ],
+    providers: [ Angular2TokenService ],
     bootstrap: [ AppComponent ]
 })
 

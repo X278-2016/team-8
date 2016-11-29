@@ -3,9 +3,9 @@
  */
 
 export class User{
-    username: string;
-    password: string;
     email: string;
+    password: string;
+    passwordConfirmation: string;
     clinic: string;
     name: string;
 }

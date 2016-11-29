@@ -23,8 +23,15 @@ export class AssessmentFormComponent implements OnInit{
 
     //Member functions
     getQuestions(): void {
-        let questions = this.assessmentFormService.getQuestions();
-        this.questions = questions;
+        this.assessmentFormService.getQuestions().subscribe(
+            questions => {
+                this.questions = questions;
+            },
+            error => {
+                //Do something in case of error
+                console.log("Error getting questions "+error);
+            }
+        );
     }
     submitForm(): void{
         console.log(this.answers);
@@ -32,8 +39,16 @@ export class AssessmentFormComponent implements OnInit{
             alert('Please select an answer for every questions');
             return;
         }
-        let id = this.assessmentFormService.sendAnswers(this.answers);
-        this.router.navigate(['../'+id], {relativeTo: this.route});
+        this.assessmentFormService.sendAnswers(this.answers).subscribe(
+            () => {
+            let username = "test";
+            this.router.navigate(['../'+username], {relativeTo: this.route});
+        },
+        error => {
+            //Do something in case of error
+            console.log("Error submitting answers"+error)
+        }
+        );
     }
 
     //Lifecycle functions
