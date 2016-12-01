@@ -1,0 +1,23 @@
+//Assessment Algorithm Pseudocode
+
+int scoreA;
+int scoreB;
+
+Questions[];
+
+String questionA;
+String questionB1;
+String questionB2;
+
+for (all questions in Questions) {
+    ask questionA
+    add answerA to scoreA
+    if answerA is 0-2
+        ask questionB1
+        add answerB to scoreB
+    else if answerA is 3-4
+        ask questionB2
+        add answerB to scoreB
+}
+
+int totalScore = scoreA + scoreB;
