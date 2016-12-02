@@ -2,7 +2,7 @@
  * Created by Staya_000 on 11/22/2016.
  */
 
-export class Recommendation {
+export class Goal {
     number: number;
-    recommendation: string;
+    goal: string;
 }

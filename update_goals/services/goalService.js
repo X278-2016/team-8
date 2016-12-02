@@ -25,4 +25,4 @@ exports.recommendationService = recommendationService;
 //Will be replaced with RESTful API calls to server once a back-end is implemented
 var recommendations = ["Recommendation 1", "Recomendation 2", "Recomendation 3",
     "Recommendation 4", "Recommendation 5", "Recommendation 6"];
-//# sourceMappingURL=recommendationService.js.map
+//# sourceMappingURL=goalService.js.map
