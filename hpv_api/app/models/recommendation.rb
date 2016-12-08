@@ -7,10 +7,18 @@ class Recommendation < ApplicationRecord
 
   def self.recommendation_generating_algorithm(answers)
        #Will be replaced with actual algorithm when mentor supplies one
-      answers.each do |answer|
-        rec = Recommendation.create({content: answer.to_s, completed: true})
-        return false if !rec.valid?
+      i=0
+      j=0
+      answers.each_with_index do |answer, index|
+        if index%2==0
+          i+=answer.to_i
+        elsif answer!=-1
+          j+=answer.to_i
+        end
       end
+      rec = Recommendation.create({content: i, completed: true})
+      rec = Recommendation.create({content: j, completed: true})
+      return false if !rec.valid?
       true
   end
 end

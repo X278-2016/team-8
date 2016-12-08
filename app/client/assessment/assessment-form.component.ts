@@ -20,12 +20,19 @@ export class AssessmentFormComponent implements OnInit{
     //Member fields
     questions: string[];
     answers: Number[];
+    followups: Number[];
 
     //Member functions
     getQuestions(): void {
         this.assessmentFormService.getQuestions().subscribe(
             questions => {
                 this.questions = questions;
+                this.answers = [ ];
+                this.followups = [ ];
+                for (let question in this.questions){
+                    this.answers.push(-1);
+                    this.followups.push(-1);
+                }
             },
             error => {
                 //Do something in case of error
@@ -36,10 +43,15 @@ export class AssessmentFormComponent implements OnInit{
     submitForm(): void{
         console.log(this.answers);
         if(this.answers.indexOf(-1)!=-1){
-            alert('Please select an answer for every questions');
+            alert('Please select an answer for every question');
             return;
         }
-        this.assessmentFormService.sendAnswers(this.answers).subscribe(
+        let combined_answers = [];
+        for(let i=0; i<this.answers.length; i++){
+            combined_answers.push(this.answers[i]);
+            combined_answers.push(this.followups[i]);
+        }
+        this.assessmentFormService.sendAnswers(combined_answers).subscribe(
             () => {
             let username = "test";
             this.router.navigate(['../'+username], {relativeTo: this.route});
@@ -54,9 +66,5 @@ export class AssessmentFormComponent implements OnInit{
     //Lifecycle functions
     ngOnInit(): void {
         this.getQuestions();
-        this.answers = [ ];
-        for (let question in this.questions){
-            this.answers.push(-1);
-        }
     }
 }

@@ -6,13 +6,23 @@
 </head>
 <body>
     <h2>Self-Assessment</h2>
+    <h4>For each question below please select a number that represents your practice's experience with implementing what the questions suggests: 0 = No experience with this / Don't plan to do it at this time, 1 = Have learned about it but have not made a plan to do it yet, 2 = Preparing to do this in the next 3 months, 3 = Partially doing this or pilot testing this now, 4 = Already do this most of the time</h4>
     <div *ngFor="let question of questions; let i = index">
         <label>Question {{i+1}}: {{question}}</label>
+        0<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="0">
         1<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="1">
         2<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="2">
         3<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="3">
         4<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="4">
-        5<input type="radio" name="question{{i}}" [(ngModel)]="answers[i]" value="5">
+        <div *ngIf = "answers[i]<=2 && answers[i]!=-1">
+            <Label>Followup Question {{i+1}}: How easy or likely would if be for your practice to begin doing this most of the time? 0 = Low, 4 = High</Label>
+            0<input type="radio" name="followup{{i}}" [(ngModel)]="followups[i]" value="0">
+            1<input type="radio" name="followup{{i}}" [(ngModel)]="followups[i]" value="1">
+            2<input type="radio" name="followup{{i}}" [(ngModel)]="followups[i]" value="2">
+            3<input type="radio" name="followup{{i}}" [(ngModel)]="followups[i]" value="3">
+            4<input type="radio" name="followup{{i}}" [(ngModel)]="followups[i]" value="4">
+        </div>
+
     </div>
     <button type="submit" (click)="submitForm(); false">Submit</button>
 </body>

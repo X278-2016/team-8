@@ -33,7 +33,10 @@ export class RegisterComponent implements OnInit {
             name: this.user.name,
             clinic: this.user.clinic
         }}).subscribe(
-            res => console.log(res),
+            res => {
+                console.log(res);
+                this.router.navigateByUrl('/assessment');
+            },
             error => console.log(error)
         );
     }
